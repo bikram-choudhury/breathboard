@@ -1,0 +1,73 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{header}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="part-1" *ngIf="!booking_block && step == 'one' ">
+      <div class="pax-block">
+        <label class="col-12" for="">Party size</label>
+        <div class="col-12 pax-list">
+          <label class="pax" *ngFor="let pax of paxNumbers; let count = index;" (click)="savePax(count+1)" [ngClass]="{'selected': selectedPax === count+1}" >{{count+1}}</label>
+          <small [hidden]="!cvalidation.pax" class="text-right form-text text-muted">Please provide PAX.</small>
+        </div>
+      </div>
+      <owl-date-time-inline class="date-time" [(ngModel)]="selectedMoment"></owl-date-time-inline>
+      <small [hidden]="!cvalidation.date" class="form-text text-muted">Please provide booking date.</small>
+    </div>
+    <div class="part-2" *ngIf="!booking_block && step == 'two'">
+      <form class="form" novalidate #registerForm="ngForm" autocomplete="off">
+        <label class="label" for="">Customer info</label>
+        <div class="form-group">
+          <input type="text" placeholder="Please enter name ..." name="cname" class="form-control" [(ngModel)]="cDetail.name" >
+          <small [hidden]="!cvalidation.name" class="form-text text-muted">Please provide name.</small>
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Please enter contact no ..." name="cphone" class="form-control" [(ngModel)]="cDetail.phone" >
+          <small [hidden]="!cvalidation.phone" class="form-text text-muted">Please provide contact no.</small>
+          
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Please enter a valid email id ..." name="cemail" class="form-control" [(ngModel)]="cDetail.email" >
+          <small [hidden]="!cvalidation.email" class="form-text text-muted">Please provide email.</small>
+          
+        </div>
+      </form>
+    </div>
+    <div class="part-3" *ngIf="!booking_block && bookingId && step == 'three' ">
+      <div class="booking-confirmation">
+        <div class="header">
+          <img src="{{confirmation_icon}}" alt="success" srcset="" width="70px" height="70px">
+        </div>
+        <div class="body">
+          <label *ngIf="booking_status">
+              Table booked successfully. You can track your booking with booking Id: <span class="booking-id">{{bookingId}}</span>
+          </label>
+          <label *ngIf="!booking_status">
+              You have an active booking with <span class="booking-id">{{bookingId}}</span> for this time slot / approximate to the time slot. Click "proceed anyway" to cancel the previous booking and save the current.
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="part-1" *ngIf="booking_block">
+      <div class="booking-block">
+        <div class="header"> {{ booking_info.name | uppercase }} </div>
+        <div class="body">
+          <label for="">{{booking_from | date: 'fullDate' }}</label>
+          <label for="">Duration: {{booking_from | date: 'shortTime' }} - {{booking_to | date: 'shortTime' }}</label>
+          <label for=""> Have a pleasent time</label>
+        </div>
+        <div class="btn-block">
+          <button type="button" class="btn btn-success pointer" (click)="processBooking('running',booking_info._id)" >Start</button>
+          <button type="button" class="btn btn-danger pointer"(click)="processBooking('dirty',booking_info._id)" >Checkout</button>
+          <button type="button" class="btn pointer" (click)="processBooking('free',booking_info._id)" >Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer" *ngIf="bookingBtnText && !booking_block">
+    <button type="button" class="btn pointer" [class.submitted]="bookingBtnText=='Submit' || bookingBtnText=='Proceed anyway'" (click)="saveBooking($event)">{{bookingBtnText}}</button>
+  </div>
+</ng-template>

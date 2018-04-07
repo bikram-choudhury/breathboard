@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+.form-control{
+    font-size: 14px;
+}
+.f-w-600 {
+    font-weight: 600;
+}
+.hidden {
+    display: none;
+}
+.pointer {
+    cursor: pointer;
+}
+.f-right {
+    float: right;
+}
+.f-left {
+    float: left;
+}
+.p-0{
+    padding: 0;
+}
+.p-l-0{
+    padding-left: 0;
+}
+.p-r-0{
+    padding-right: 0;
+}
+.p-b-0{
+    padding-bottom: 0;
+}
+.p-t-0{
+    padding-top: 0;
+}
+.row-reverse{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.modal-content {
+    border: none;
+    font-family: sans-serif;
+}
+.w-400 .modal-dialog {
+    width: 400px;
+}
+

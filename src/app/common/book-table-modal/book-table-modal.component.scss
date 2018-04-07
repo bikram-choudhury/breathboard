@@ -1,0 +1,73 @@
+.modal-header{
+    background: #0275d8;
+    color: #FFF;
+    text-transform: capitalize;
+    .modal-title{
+        font-size: 19px;
+        font-weight: 600;
+    }
+    .close {
+        color: #FFF;
+    }
+}
+.modal-footer {
+    border: none;
+    .btn{
+        background-color: #ffce3f;
+        border-color: #ffce3f;
+        width: 100%;
+        font-weight: 600;
+        font-size: 14px;
+        color: #FFF;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+.modal-body {
+    .date-time {
+        margin-left: 37px;
+    }
+    .pax-block {
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;    
+        .pax-list {
+            label {
+                min-width: 32px;
+                border: 1px solid #ccc;
+                margin-right: 10px;
+                text-align: center;
+                border-radius: 5px;
+                font-size: 14px;
+                cursor: pointer;
+                &.selected {
+                    background: #236cb2;
+                    color: #FFF;
+                    border: none;
+                }
+            }
+        }
+    }
+    .booking-confirmation,.booking-block {
+        text-align: center;
+        margin-bottom: 15px;
+        .header {
+            margin-bottom: 15px;
+            color: #d9534f;
+            font-weight: 600;
+            font-size: 21px;
+        }
+        .body {
+            text-align: center;
+            label {
+                display: grid;
+                font-family: monospace;
+                font-size: 17px;
+            }
+        }
+        .booking-id {
+            color: red;
+            font-weight: 500;
+        }
+    }
+}

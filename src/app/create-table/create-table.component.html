@@ -1,0 +1,63 @@
+<div class="row create-table">
+  <section class="col-xs-12 col-md-6">
+    <div class="container">
+      <form class="form" novalidate #createForm="ngForm" autocomplete="off">
+        <div class="form-group row">
+          <label for="tableName" class="col-sm-3 col-md-2 col-form-label">Table Name</label>
+          <div class="col-sm-9 col-md-10">
+            <input type="text" class="form-control form-control-success" id="tableName" placeholder="" #tableName="ngModel" [(ngModel)]="formData.tableName" name="tableName" >
+            <small [hidden]="tableName.valid || (tableName.pristine && !createForm.submitted)" class="form-text text-muted">Please add a name for table.</small>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="roomType" class="col-sm-3 col-md-2 col-form-label">Room Type</label>
+          <div class="col-sm-9 col-md-10">
+            <select class="form-control custom-select" id="roomType" #roomType="ngModel" [(ngModel)]="formData.roomType" name="roomType">
+              <option *ngFor="let list of roomTypeList;" [ngValue]="list.key" >{{list.type}}</option>
+            </select>
+            <small class="form-text text-muted">Please choose room type.</small>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="floorType" class="col-sm-3 col-md-2 col-form-label">Floor Type</label>
+          <div class="col-sm-9 col-md-10">
+            <select class="form-control custom-select" id="floorType" #floorType="ngModel" [(ngModel)]="formData.floorType" name="floorType">
+              <option *ngFor="let list of floorTypeList;" [ngValue]="list.key" >{{list.type}}</option>
+            </select>
+            <small class="form-text text-muted">Please choose floor type.</small>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <section class="col-xs-12 col-md-6">
+    <div class="container">
+      <div class="col-sm-8 col-md-6 col-xs-12 f-right p-0 ">
+        <search-input (searchValue)="filterTables($event)" ></search-input>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Room Type</th>
+            <th>Floor Type</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let list of filteredTables; let count=index;">
+            <td>{{count+1}}</td>
+            <td>{{list.name}}</td>
+            <td>{{list.rType}}</td>
+            <td>{{list.fType}}</td>
+            <td>
+              <button type="button" class="btn btn-sm btn-info pointer" (click)="editTable(list._id)">E</button>
+              <button type="button" class="btn btn-sm btn-danger pointer" (click)="removeTable(list._id)">R</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

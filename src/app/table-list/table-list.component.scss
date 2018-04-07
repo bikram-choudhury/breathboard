@@ -1,0 +1,91 @@
+section {
+    &.table-status {
+        border-bottom: 1px solid #eceeef;
+        height: 30px;
+        padding: 0;
+        .container-fluid {
+            height: 100%;
+            display: flex;
+            span {
+                position: relative;
+                text-align: center;
+                margin-right: 19px;
+                padding-left: 19px;
+                text-transform: uppercase;
+                align-items: center;
+                display: inline-flex;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 100%;
+                    left: 0;
+                    top: 10px;
+                }
+                &.dirty {
+                    &::before {
+                        background: #ecf019;
+                    }
+                }
+                &.booked {
+                    &::before {
+                        background: #ee2710;
+                    }
+                }
+                &.running {
+                    &::before {
+                        background: #75c20f;
+                    }
+                }
+                &.free {
+                    &::before {
+                        border: 1px solid #ccc;
+                    }
+                }
+            }
+        }
+    }
+    &.table-list {
+        padding-bottom: 70px;
+        .type-1,.type-2,.table-block {
+            height: auto;
+            border-bottom: 2px solid #ffffff;
+            padding: 1em 0;
+            .list-container {
+                .label {
+                    width: 70px;
+                    height: 70px;
+                    margin: 0.5em 1em;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid #ccc;
+                    border-radius: 100%;
+                    &.running {
+                        background: #75c20f;
+                        border-color: #75c20f;
+                        color: #ffffff;
+                        font-weight: 600;
+                    }
+                    &.dirty {
+                        background: #ecf019;
+                        border-color: #ecf019;
+                        color: #292b2c;
+                        font-weight: 600;
+                    }
+                    &.booked {
+                        background: #ee2710;
+                        border-color: #ee2710;
+                        color: #ffffff;
+                        font-weight: 600;
+                    }
+                }
+            }
+            .list-type-label {
+                width: 100%;
+                margin-left: 1em;
+            }
+        }
+    }
+}

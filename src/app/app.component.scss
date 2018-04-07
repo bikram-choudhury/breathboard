@@ -1,0 +1,186 @@
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 999;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+    &.active {
+        margin-left: -250px;
+    }
+    .sidebar-header {
+        padding: 20px;
+        background: #6d7fcc;
+    }
+    ul {
+        &.components {
+            padding: 20px 0;
+            border-bottom: 1px solid #47748b;
+        }
+        p {
+            padding: 10px;
+        }
+        li {
+            a {
+                padding: 10px;
+                font-size: 0.9em;
+                display: block;
+                padding-left: 30px;
+                color: #fff;
+                text-decoration: none;
+                &:hover {
+                    color: #7386D5;
+                    background: #fff;
+                }
+            }
+            &.active{
+                background: #7386D5;
+                &> a {
+                    color: #fff;
+                    background: #6d7fcc;
+                }
+            }
+        }
+    }
+    
+    a {
+        &[aria-expanded="true"] {
+            color: #fff;
+            background: #6d7fcc;
+        }
+        &[data-toggle="collapse"] {
+            position: relative;
+        }
+        &[aria-expanded="false"]::before {
+            content: '\e259';
+            display: block;
+            position: absolute;
+            right: 20px;
+            font-family: 'Glyphicons Halflings';
+            font-size: 0.6em;
+        }
+        &[aria-expanded="true"]::before {
+            content: '\e259';
+            display: block;
+            position: absolute;
+            right: 20px;
+            font-family: 'Glyphicons Halflings';
+            font-size: 0.6em;
+            content: '\e260';
+        }
+    }
+    
+}
+
+/* ---------------------------------------------------
+    APP STYLE
+----------------------------------------------------- */
+
+.app-container{
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    transition: all 0.3s;
+    font-family: monospace;
+    opacity: 0.7;
+    &.active {
+        opacity:1;
+    }
+}
+section {
+    &.header {
+        background: #025aa5;
+        color: #FFF;
+        height: 135px;
+        padding: 1em 1em;
+        .container-fluid {
+            display: flex;
+            align-items: center;
+            #sidebarCollapse{
+                margin-right: 20px;
+                cursor: pointer;
+            }
+            .logo {
+                height: 100px;
+                width: 100px;
+            }
+            .text {
+                margin: 0 auto;
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                font-size: 71px;
+                text-transform: uppercase;
+                font-family: sans-serif;
+            }
+        }
+    }
+    &.user-info {
+        border-bottom: 1px solid #eceeef;
+        .container-fluid {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 5px 0;
+            div:nth-child(1){
+                text-align: left;
+            }
+            div:nth-child(2){
+                white-space: nowrap;
+            }
+            div:nth-child(3){
+                text-align: right;
+            }
+        }
+    }
+    &.action-block {
+        background: #FFF;
+        border-top: 1px solid #eceeef;
+        padding: 0.7em 0;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        bottom: 0;
+        button {
+            height: 50px;
+            width: 150px;
+            background: #3291e2;
+            border: #3291e2;
+            cursor: pointer;
+        }
+    }
+}
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 570px) {
+    .app-container {
+        section {
+            &.header {
+                .container-fluid .text {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 430px) {
+    .app-container {
+        section {
+            &.user-info {
+                padding: 0;
+                .container-fluid {
+                    display: block;
+                    text-align: left;
+                    padding: 8px 0 5px;
+                }
+            }
+        }
+    }
+}

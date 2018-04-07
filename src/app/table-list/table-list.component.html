@@ -1,0 +1,26 @@
+<div class="row">
+  <book-table-modal [header]="header" [tableId]="tableId" [booking_info]="booking_info" (resetModalProperty)="handelbookingSatatus($event)" ></book-table-modal>
+  <section class="col-sm-12 table-status">
+    <div class="container-fluid col-12">
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <search-input (searchValue)="filterTableList($event)" ></search-input>
+      </div>
+      <div class="row-reverse col-md-9 col-sm-6 col-xs-12">
+        <span class="dirty">Dirty</span>
+        <span class="booked">Blocked</span>
+        <span class="free">Free</span>
+        <span class="running">Running</span>
+      </div>
+    </div>
+  </section>
+  <section class="col-sm-12 table-list" *ngIf="roomTypeList">
+    <div class="row table-block" *ngFor="let room of roomTypeList;">
+        <label class="list-type-label f-w-600">{{room | uppercase}}</label>
+        <div class="col-xs-12 list-container">
+            <label class="label pointer {{table.status}}" *ngFor="let table of formatedTableList[room];" [attr.table_id] = "table.tId" [attr.booking_id]="table.booking_id" (click)="processTable($event,table)" >
+                <span>{{table.name}}</span>
+              </label>
+        </div>
+    </div>
+  </section>
+</div>
