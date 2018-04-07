@@ -23,7 +23,7 @@ export class GlobalService {
     key: 'self-service',
     type: 'Self Service'
   }];
-  serverURL:String = "//localhost:4080/api/";
+  serverURL:String = "https://breathboard-api.now.sh/api/";
   databaseURL = "";
   resturantId:String = 'IRu1bE3naGTMzLt';
 
