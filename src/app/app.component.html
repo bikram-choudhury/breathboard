@@ -1,55 +1,55 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 <div class="wrapper">
-    <nav id="sidebar" [ngClass]="sidebarToggle?'':'active'" >
-      <div class="sidebar-header">
-        <h3>{{title}}</h3>
+  <nav id="sidebar" [ngClass]="sidebarToggle?'':'active'" >
+    <div class="sidebar-header">
+      <h3>{{title}}</h3>
+    </div>
+  
+    <ul class="components">
+      <li class="nav-item">
+        <a routerLink="" routerLinkActive="active" (click)="toggleSidenav($event)">Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="create-table" routerLinkActive="active" (click)="toggleSidenav($event)">Create Table</a>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">Pages</a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item"><a href="#">Page 1</a></li>
+          <li class="dropdown-item"><a href="#">Page 2</a></li>
+          <li class="dropdown-item"><a href="#">Page 3</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  
+  </nav>
+<div class="col-sm-12 app-container" (click)="collapseSidenav($event)" [ngClass]="sidebarToggle?'':'active'">
+  <section class="col-sm-12 header">
+    <div class="container-fluid">
+      <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="toggleSidenav($event)">
+          <span>TS</span>
+      </button>
+      <div class="logo">
+        <img [attr.src]="logo" alt="{{title}}">
       </div>
-    
-      <ul class="components">
-        <li class="nav-item">
-          <a routerLink="" routerLinkActive="active" (click)="toggleSidenav($event)">Home</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="create-table" routerLinkActive="active" (click)="toggleSidenav($event)">Create Table</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">Pages</a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-item"><a href="#">Page 1</a></li>
-            <li class="dropdown-item"><a href="#">Page 2</a></li>
-            <li class="dropdown-item"><a href="#">Page 3</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    
-    </nav>
-  <div class="col-sm-12 app-container" (click)="collapseSidenav($event)" [ngClass]="sidebarToggle?'':'active'">
-    <section class="col-sm-12 header">
-      <div class="container-fluid">
-        <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="toggleSidenav($event)">
-            <span>TS</span>
-        </button>
-        <div class="logo">
-          <img [attr.src]="logo" alt="{{title}}">
-        </div>
-        <div class="text">{{title}}</div>
-      </div>
-    </section>
-    <section class="col-sm-12 user-info">
-      <div class="container-fluid">
-        <div class="col-sm-4">Bikram Choudhury</div>
-        <div class="col-sm-4">10 Full &ensp; 0 Vacant</div>
-        <div class="col-sm-4">Don't know</div>
-      </div>
-    </section>
-    <section class="col-sm-12 router-container">
-      <router-outlet></router-outlet>
-    </section>
-    <section class="col-sm-12 action-block">
-      <button class="btn btn-primary {{saveBtnFor}}" (click)="saveDetails(saveBtnFor)">Save</button>
-    </section>
-  </div>
+      <div class="text">{{title}}</div>
+    </div>
+  </section>
+  <section class="col-sm-12 user-info">
+    <div class="container-fluid">
+      <div class="col-sm-4">Bikram Choudhury</div>
+      <div class="col-sm-4">10 Full &ensp; 0 Vacant</div>
+      <div class="col-sm-4">Don't know</div>
+    </div>
+  </section>
+  <section class="col-sm-12 router-container">
+    <router-outlet></router-outlet>
+  </section>
+  <section class="col-sm-12 action-block">
+    <button class="btn btn-primary {{saveBtnFor}}" (click)="saveDetails(saveBtnFor)">Save</button>
+  </section>
+</div>
 </div>

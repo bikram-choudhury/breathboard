@@ -5,7 +5,8 @@
         <div class="form-group row">
           <label for="tableName" class="col-sm-3 col-md-2 col-form-label">Table Name</label>
           <div class="col-sm-9 col-md-10">
-            <input type="text" class="form-control form-control-success" id="tableName" placeholder="" #tableName="ngModel" [(ngModel)]="formData.tableName" name="tableName" >
+            <input type="text" class="form-control form-control-success" id="tableName" placeholder="" #tableName="ngModel" [(ngModel)]="formData.tableName"
+              name="tableName">
             <small [hidden]="tableName.valid || (tableName.pristine && !createForm.submitted)" class="form-text text-muted">Please add a name for table.</small>
           </div>
         </div>
@@ -13,7 +14,7 @@
           <label for="roomType" class="col-sm-3 col-md-2 col-form-label">Room Type</label>
           <div class="col-sm-9 col-md-10">
             <select class="form-control custom-select" id="roomType" #roomType="ngModel" [(ngModel)]="formData.roomType" name="roomType">
-              <option *ngFor="let list of roomTypeList;" [ngValue]="list.key" >{{list.type}}</option>
+              <option *ngFor="let list of roomTypeList;" [ngValue]="list.key">{{list.type}}</option>
             </select>
             <small class="form-text text-muted">Please choose room type.</small>
           </div>
@@ -22,7 +23,7 @@
           <label for="floorType" class="col-sm-3 col-md-2 col-form-label">Floor Type</label>
           <div class="col-sm-9 col-md-10">
             <select class="form-control custom-select" id="floorType" #floorType="ngModel" [(ngModel)]="formData.floorType" name="floorType">
-              <option *ngFor="let list of floorTypeList;" [ngValue]="list.key" >{{list.type}}</option>
+              <option *ngFor="let list of floorTypeList;" [ngValue]="list.key">{{list.type}}</option>
             </select>
             <small class="form-text text-muted">Please choose floor type.</small>
           </div>
@@ -33,7 +34,7 @@
   <section class="col-xs-12 col-md-6">
     <div class="container">
       <div class="col-sm-8 col-md-6 col-xs-12 f-right p-0 ">
-        <search-input (searchValue)="filterTables($event)" ></search-input>
+        <search-input (searchValue)="filterTables($event)"></search-input>
       </div>
       <table class="table table-bordered">
         <thead>
